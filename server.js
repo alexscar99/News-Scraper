@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+var exphbs = require('express-handlebars');
 
 // scraping tools
 var cheerio = require('cheerio');
@@ -17,5 +18,11 @@ app.use(logger('dev'));
 app.use(bodyParse.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-// connect to db and routes
+// connect to db and write routes
 mongoose.connect('mongodb://localhost/newsScraper');
+
+app.get('/', function(req, res) {
+  axios.get('http://www.espn.com/').then(function(response) {
+    var $ = cheerio.load(response.data);
+  });
+});
