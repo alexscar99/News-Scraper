@@ -10,18 +10,19 @@ var axios = require('axios');
 
 // require models and initialize express
 var db = require('./models');
-
 var PORT = 3000;
+var app = express();
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-var app = express();
-
 // configure middleware
 app.use(logger('dev'));
-app.use(bodyParse.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(express.static('public'));
+
+require('./controller/html-routes.js')(app);
 
 // connect to db and write routes
 mongoose.connect('mongodb://localhost/newsScraper');
@@ -29,5 +30,36 @@ mongoose.connect('mongodb://localhost/newsScraper');
 app.get('/', function(req, res) {
   axios.get('http://www.espn.com/').then(function(response) {
     var $ = cheerio.load(response.data);
+
+    $('article').each(function(i, element) {
+      var result = {};
+
+      result.title = $(this)
+        .find('h1')
+        .text();
+
+      result.link =
+        'http://www.espn.com' +
+        $(this)
+          .find('a')
+          .attr('href');
+
+      result.body = $(this)
+        .find('p')
+        .text();
+
+      db.Article.create(result)
+        .then(function(dbArticle) {
+          console.log(dbArticle);
+        })
+        .catch(function(err) {
+          return res.json(err);
+        });
+    });
+    res.send('');
   });
+});
+
+app.listen(PORT, function() {
+  console.log('App running on port ' + PORT + '!');
 });

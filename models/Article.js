@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var Schema = mongoose.schema;
+var Schema = mongoose.Schema;
 
 var ArticleSchema = new Schema({
   title: {
@@ -8,6 +8,10 @@ var ArticleSchema = new Schema({
     required: true
   },
   link: {
+    type: String,
+    required: true
+  },
+  body: {
     type: String,
     required: true
   },
