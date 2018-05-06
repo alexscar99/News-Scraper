@@ -10,7 +10,12 @@ var axios = require('axios');
 
 // require models and initialize express
 var db = require('./models');
+
 var PORT = 3000;
+
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
+
 var app = express();
 
 // configure middleware
