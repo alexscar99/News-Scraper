@@ -14,7 +14,7 @@ a:hover {
   border: none;
   outline: none;
   border-radius: 0;
-  height: 75px;
+  height: 90px;
 }
 
 .navbar-default .navbar-brand {
@@ -40,7 +40,7 @@ a:hover {
 }
 
 .container-fluid {
-  margin-top: 15px;
+  margin-top: 25px;
 }
 
 .navbar-header {
@@ -64,11 +64,15 @@ a:hover {
 .scrape-btn {
   width: 200px;
   height: 50px;
-  background: black;
-  color: white;
-  border-radius: 8px;
+  background: white;
+  color: black;
   float: left;
   font-size: 1.3em;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 0px 5px 1px;
+  margin-left: 250px;
+  margin-top: -3px;
 }
 
 .bg-img {
