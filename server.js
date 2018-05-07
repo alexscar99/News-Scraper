@@ -19,7 +19,6 @@ app.set('view engine', 'handlebars');
 // configure middleware
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 app.use(express.static('public'));
 
 require('./controller/html-routes.js')(app);
@@ -27,7 +26,7 @@ require('./controller/html-routes.js')(app);
 // connect to db and write routes
 mongoose.connect('mongodb://localhost/newsScraper');
 
-app.get('/', function(req, res) {
+app.get('/scrape', function(req, res) {
   axios.get('http://www.espn.com/').then(function(response) {
     var $ = cheerio.load(response.data);
 
@@ -58,6 +57,17 @@ app.get('/', function(req, res) {
     });
     res.send('');
   });
+});
+
+app.get('/articles', function(req, res) {
+  // TODO: Finish the route so it grabs all of the articles
+  db.Article.find({})
+    .then(function(dbArticle) {
+      res.json(dbArticle);
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
 });
 
 app.listen(PORT, function() {

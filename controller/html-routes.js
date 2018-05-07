@@ -3,7 +3,7 @@ module.exports = function(app) {
     res.render('index', {});
   });
 
-  app.get('/articles', function(req, res) {
+  app.get('/saved', function(req, res) {
     res.render('saved-articles', {});
   });
 };
