@@ -60,7 +60,6 @@ app.get('/scrape', function(req, res) {
 });
 
 app.get('/articles', function(req, res) {
-  // TODO: Finish the route so it grabs all of the articles
   db.Article.find({})
     .then(function(dbArticle) {
       res.json(dbArticle);

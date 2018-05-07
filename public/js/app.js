@@ -5,7 +5,6 @@ $(document).ready(function() {
       method: 'GET',
       url: '/articles/'
     }).then(function(data) {
-      // Log the response
       console.log(data);
       $('.article-section-heading').text('ARTICLES');
       $('.article-section-heading').css('border-bottom', '3px solid black');
