@@ -4,7 +4,7 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 var exphbs = require('express-handlebars');
 
-// scraping tools
+// scraping tools2
 var cheerio = require('cheerio');
 var axios = require('axios');
 
@@ -55,7 +55,7 @@ app.get('/scrape', function(req, res) {
           return res.json(err);
         });
     });
-    res.send('');
+    res.send();
   });
 });
 
