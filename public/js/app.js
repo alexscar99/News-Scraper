@@ -9,7 +9,7 @@ $(document).ready(function() {
       $('.article-section-heading').text('ARTICLES');
       $('.article-section-heading').css('border-bottom', '3px solid black');
       $('.article-section-heading').css('padding-bottom', '5px');
-      for (var i = 0; i < 20; i++) {
+      for (var i = 0; i < data.length; i++) {
         $('.article-section').append(
           "<div class='article-content'>" +
             "<div class='row'>" +
