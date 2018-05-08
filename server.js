@@ -21,7 +21,8 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-require('./controller/html-routes.js')(app);
+var routes = require('./controller/controller.js');
+app.use(routes);
 
 // connect to db and write routes
 mongoose.connect('mongodb://localhost/newsScraper');
