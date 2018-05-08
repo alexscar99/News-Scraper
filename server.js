@@ -25,7 +25,9 @@ const routes = require('./controller/controller.js');
 app.use(routes);
 
 // connect to db and write routes
-mongoose.connect('mongodb://localhost/scraperDB');
+var MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/scraperDB';
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI);
 
 app.get('/scrape', function(req, res) {
   axios.get('http://www.espn.com/').then(function(response) {
