@@ -14,15 +14,20 @@ $(document).on('click', '#article-comment', function() {
       "<textarea class='form-control' rows='3' placeholder='Comment Text' id='input-body' name='body'></textarea><br><br>"
     );
     $('#comments').append(
-      "<button data-id='" +
-        data._id +
-        "' id='save-comment'>Save Comment</button>"
+      "<button data-id='" + data._id + "' id='save-comment'>Submit</button>"
     );
 
     if (data.comment) {
       $('#input-title').val(data.comment.title);
       $('#input-body').val(data.comment.body);
     }
+
+    $('html, body').animate(
+      {
+        scrollTop: $('.article-section').offset().top
+      },
+      800
+    );
   });
 });
 

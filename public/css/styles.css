@@ -144,7 +144,6 @@ a:hover {
 
 #save-article,
 #article-comment,
-#save-comment,
 #delete-comment {
   float: none;
   margin: 25px;
@@ -153,13 +152,27 @@ a:hover {
   border: 2px solid #bc1212;
 }
 
+#save-comment {
+  float: none;
+  margin: 25px;
+  color: #c92f2f;
+  box-shadow: none;
+  border: 2px solid #c92f2f;
+}
+
 #save-article:hover,
 #article-comment:hover,
-#save-comment:hover,
 #delete-comment:hover {
   background: black;
   border: 2px solid black;
   color: white;
+  transition: 0.8s;
+}
+
+#save-comment:hover {
+  background: #c92f2f;
+  color: white;
+  border: 2px solid #c92f2f;
   transition: 0.8s;
 }
 
