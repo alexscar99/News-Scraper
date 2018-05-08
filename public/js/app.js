@@ -1,3 +1,7 @@
+$(document).on('click', '.scrape-link', function() {
+  $('#article-section').empty();
+});
+
 $(document).on('click', '#article-comment', function() {
   $('#comments').empty();
   let thisId = $(this).attr('data-id');
