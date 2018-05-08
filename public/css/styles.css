@@ -62,7 +62,9 @@ a:hover {
   text-align: center;
 }
 
-.scrape-btn {
+.scrape-btn,
+#save-article,
+#article-comment {
   width: 200px;
   height: 50px;
   background: white;
@@ -119,49 +121,39 @@ a:hover {
   margin: 35px 0;
 }
 
-.article-content {
-  padding: 20px;
+#article-content {
+  padding: 35px;
   background: #c92f2f;
   color: black;
-  margin: 25px;
+  margin-top: 80px;
+  margin-left: 75px;
   border-radius: 8px;
   position: relative;
 }
 
-.article-content h2 {
-  font-size: 1.5em;
+#article-content h2 {
+  font-size: 2em;
   color: white;
 }
 
-.article-content h2:hover {
-  color: rgb(78, 77, 77);
-  transition-duration: 0.5s;
+#article-content p {
+  font-size: 1.2em;
+  color: #333;
 }
 
-.thumbs-up {
-  border-radius: 100%;
-  height: 65px;
-  width: 65px;
-  border: 2px solid black;
-  padding: 0;
-  padding-top: 0.85%;
-  padding-left: 0.35%;
-  margin-left: 12%;
-  margin-top: 2%;
+#save-article,
+#article-comment {
+  float: none;
+  margin: 35px;
+  margin-top: 200px;
+  color: #bc1212;
+  box-shadow: none;
+  border: 2px solid #bc1212;
 }
 
-.thumbs-up:hover {
-  cursor: pointer;
-  transition: 0.8s;
-  border: 2px solid #ddd;
-}
-
-.thumbs-up-icon {
-  color: black;
-  font-size: 2.5em;
-}
-
-.thumbs-up-icon:hover {
-  color: #ddd;
+#save-article:hover,
+#article-comment:hover {
+  background: #bc1212;
+  color: white;
   transition: 0.8s;
 }
