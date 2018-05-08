@@ -88,7 +88,7 @@ app.post('/articles/:id', function(req, res) {
     .then(function(dbComment) {
       return db.Article.findOneAndUpdate(
         { _id: req.params.id },
-        { note: dbComment._id },
+        { comment: dbComment._id },
         { new: true }
       );
     })

@@ -7,17 +7,17 @@
       <p> {{this.body}}</p>
       <br>
       <p> {{this.link}}</p>
+
+      <button type="button" data-id={{this._id}} id="delete-comment" data-favorited={{this.favorited}}>
+        Delete Article
+      </button>
+
+      <button type="button" id='article-comment' data-id={{this._id}}>
+        View Article Comment
+      </button>
     </div>
 
-    <button type="button" class="btn btn-danger" data-id={{this._id}} id="delete" data-favorited={{this.favorited}}>
-      Delete Article
-    </button>
-
-    <button type="button" class="btn btn-danger" id='article-comment' data-id={{this._id}}>
-      View Article Comment
-    </button>
-
-    <div class="col-lg-5" id="comments">
+    <div class="col-lg-4" id="comments">
 
     </div>
   </div>

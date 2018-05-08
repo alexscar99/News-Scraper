@@ -6,15 +6,17 @@ $(document).on('click', '#article-comment', function() {
     method: 'GET',
     url: '/articles/' + thisId
   }).then(function(data) {
-    console.log(data);
-
     $('#comments').append("<h2 id='comment-title'>" + data.title + '</h2>');
-    $('#comments').append("<input id='input-title' name='title'><br><br>");
     $('#comments').append(
-      "<textarea id='input-body' name='body'></textarea><br><br>"
+      "<input type='text' class='form-control' placeholder='Comment Title' id='input-title' name='title'><br><br>"
     );
     $('#comments').append(
-      "<button data-id='" + data._id + "' id='save-comment'>Save Note</button>"
+      "<textarea class='form-control' rows='3' placeholder='Comment Text' id='input-body' name='body'></textarea><br><br>"
+    );
+    $('#comments').append(
+      "<button data-id='" +
+        data._id +
+        "' id='save-comment'>Save Comment</button>"
     );
 
     if (data.comment) {
@@ -26,7 +28,7 @@ $(document).on('click', '#article-comment', function() {
 
 $(document).on('click', '#save-article', function() {
   let thisId = $(this).attr('data-id');
-  let favorited = $(this).attr('data-favorited');
+  var favorited = $(this).attr('data-favorited');
 
   if (favorited === 'false') {
     $.ajax({
@@ -41,7 +43,7 @@ $(document).on('click', '#save-article', function() {
   }
 });
 
-$(document).on('click', '#delete', function() {
+$(document).on('click', '#delete-comment', function() {
   let thisId = $(this).attr('data-id');
   let favorited = $(this).attr('data-favorited');
 
@@ -54,6 +56,7 @@ $(document).on('click', '#delete', function() {
       }
     }).then(function(data) {
       console.log(data);
+      location.reload();
     });
   }
 });

@@ -64,7 +64,9 @@ a:hover {
 
 .scrape-btn,
 #save-article,
-#article-comment {
+#article-comment,
+#delete-comment,
+#save-comment {
   width: 200px;
   height: 50px;
   background: white;
@@ -125,8 +127,7 @@ a:hover {
   padding: 35px;
   background: #c92f2f;
   color: black;
-  margin-top: 80px;
-  margin-left: 75px;
+  margin: 50px 0 50px 75px;
   border-radius: 8px;
   position: relative;
 }
@@ -142,18 +143,31 @@ a:hover {
 }
 
 #save-article,
-#article-comment {
+#article-comment,
+#save-comment,
+#delete-comment {
   float: none;
-  margin: 35px;
-  margin-top: 200px;
+  margin: 25px;
   color: #bc1212;
   box-shadow: none;
   border: 2px solid #bc1212;
 }
 
 #save-article:hover,
-#article-comment:hover {
-  background: #bc1212;
+#article-comment:hover,
+#save-comment:hover,
+#delete-comment:hover {
+  background: black;
+  border: 2px solid black;
   color: white;
   transition: 0.8s;
+}
+
+#comment-title {
+  font-size: 1.6em;
+  color: black;
+}
+
+#comments {
+  margin: 85px;
 }
