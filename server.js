@@ -118,6 +118,6 @@ app.put('/articles/:id', function(req, res) {
     });
 });
 
-app.listen(MONGODB_URI || PORT, function() {
+app.listen(PORT, function() {
   console.log('App running on port ' + PORT + '!');
 });
