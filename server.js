@@ -25,7 +25,7 @@ const routes = require('./controller/controller.js');
 app.use(routes);
 
 // connect to db and write routes
-var MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/scraperDB';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/scraperDB';
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI);
 
@@ -118,6 +118,6 @@ app.put('/articles/:id', function(req, res) {
     });
 });
 
-app.listen(PORT, function() {
+app.listen(MONGODB_URI || PORT, function() {
   console.log('App running on port ' + PORT + '!');
 });
