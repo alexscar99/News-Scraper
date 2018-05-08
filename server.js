@@ -4,7 +4,7 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 const exphbs = require('express-handlebars');
 
-// scraping tools2
+// scraping tools
 const cheerio = require('cheerio');
 const axios = require('axios');
 
@@ -30,6 +30,7 @@ mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI);
 
 app.get('/scrape', function(req, res) {
+  db.Article.drop();
   axios.get('http://www.espn.com/').then(function(response) {
     const $ = cheerio.load(response.data);
 
