@@ -30,6 +30,7 @@ mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI);
 
 app.get('/scrape', function(req, res) {
+  db.Article.remove({});
   axios.get('http://www.espn.com/').then(function(response) {
     const $ = cheerio.load(response.data);
 
@@ -49,8 +50,6 @@ app.get('/scrape', function(req, res) {
       result.body = $(this)
         .find('p')
         .text();
-
-      db.Article.remove({});
 
       db.Article.create(result)
         .then(function(dbArticle) {
