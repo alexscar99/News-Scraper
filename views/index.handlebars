@@ -9,10 +9,10 @@
       <p> {{this.link}}</p>
     </div>
 
-    <button type="button" class="" data-id={{this._id}} id="save-article" saved={{this.saved}}>Save Article</button>
-    <button type="button" class="" id='article-comment' data-id={{this._id}}> View Article Note </button>
+    <button type="button" class="btn btn-primary" data-id={{this._id}} id="save-article" data-favorited={{this.favorited}}>Save Article</button>
+    <button type="button" class="btn btn-primary" id='article-comment' data-id={{this._id}}> View Article Note </button>
 
-    <div class="col-lg-6" id="comments">
+    <div class="col-lg-5" id="comments">
 
     </div>
   </div>

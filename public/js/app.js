@@ -1,6 +1,6 @@
 $(document).on('click', '#article-comment', function() {
   $('#comments').empty();
-  var thisId = $(this).attr('data-id');
+  let thisId = $(this).attr('data-id');
 
   $.ajax({
     method: 'GET',
@@ -59,7 +59,7 @@ $(document).on('click', '#delete', function() {
 });
 
 $(document).on('click', '#save-comment', function() {
-  var thisId = $(this).attr('data-id');
+  let thisId = $(this).attr('data-id');
 
   $.ajax({
     method: 'POST',

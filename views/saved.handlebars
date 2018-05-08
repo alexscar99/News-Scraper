@@ -1,5 +1,25 @@
 <div class="article-section">
-  <h2>
-    <span class="article-section-heading">SAVED ARTICLES</span>
-  </h2>
+  {{#each articles}} {{#if favorited}}
+  <div class="row">
+    <div class="col-lg-6" id="article-content">
+      <h2> {{this.title}} </h2>
+      <br>
+      <p> {{this.body}}</p>
+      <br>
+      <p> {{this.link}}</p>
+    </div>
+
+    <button type="button" class="btn btn-danger" data-id={{this._id}} id="delete" data-favorited={{this.favorited}}>
+      Delete Article
+    </button>
+
+    <button type="button" class="btn btn-danger" id='article-comment' data-id={{this._id}}>
+      View Article Comment
+    </button>
+
+    <div class="col-lg-5" id="comments">
+
+    </div>
+  </div>
+  {{/if}} {{/each}}
 </div>

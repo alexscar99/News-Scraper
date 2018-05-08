@@ -1,17 +1,17 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var logger = require('morgan');
-var mongoose = require('mongoose');
-var exphbs = require('express-handlebars');
+const express = require('express');
+const bodyParser = require('body-parser');
+const logger = require('morgan');
+const mongoose = require('mongoose');
+const exphbs = require('express-handlebars');
 
 // scraping tools2
-var cheerio = require('cheerio');
-var axios = require('axios');
+const cheerio = require('cheerio');
+const axios = require('axios');
 
 // require models and initialize express
-var db = require('./models');
-var PORT = 3000;
-var app = express();
+const db = require('./models');
+const PORT = 3000;
+const app = express();
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
@@ -21,7 +21,7 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-var routes = require('./controller/controller.js');
+const routes = require('./controller/controller.js');
 app.use(routes);
 
 // connect to db and write routes
@@ -29,10 +29,10 @@ mongoose.connect('mongodb://localhost/newsScraper');
 
 app.get('/scrape', function(req, res) {
   axios.get('http://www.espn.com/').then(function(response) {
-    var $ = cheerio.load(response.data);
+    const $ = cheerio.load(response.data);
 
     $('article').each(function(i, element) {
-      var result = {};
+      let result = {};
 
       result.title = $(this)
         .find('h1')
@@ -93,6 +93,22 @@ app.post('/articles/:id', function(req, res) {
       );
     })
     .then(function(dbArticle) {
+      res.json(dbArticle);
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
+});
+
+app.put('/articles/:id', function(req, res) {
+  db.Article.update(
+    {
+      _id: req.params.id
+    },
+    { $set: { favorited: req.body.favorited } }
+  )
+    .then(function(dbArticle) {
+      console.log(dbArticle);
       res.json(dbArticle);
     })
     .catch(function(err) {

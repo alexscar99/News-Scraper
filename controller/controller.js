@@ -1,27 +1,23 @@
-var db = require('../models');
-var express = require('express');
-var router = express.Router();
-var handlebarsObj;
+const db = require('../models');
+const express = require('express');
+const router = express.Router();
+var handlebarsObject;
 
 router.get('/', function(req, res) {
   db.Article.find({}).then(function(result) {
-    handlebarsObj = {
+    handlebarsObject = {
       articles: result
     };
-    res.render('index', handlebarsObj);
+    res.render('index', handlebarsObject);
   });
 });
 
 router.get('/saved', function(req, res) {
-  db.Article.find({
-    where: {
-      saved: true
-    }
-  }).then(function(result) {
-    handlebarsObj = {
+  db.Article.find({}).then(function(result) {
+    handlebarsObject = {
       articles: result
     };
-    res.render('saved', handlebarsObj);
+    res.render('saved', handlebarsObject);
   });
 });
 
