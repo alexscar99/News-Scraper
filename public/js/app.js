@@ -13,9 +13,15 @@ $(document).on('click', '#article-comment', function() {
     $('#comments').append(
       "<textarea class='form-control' rows='3' placeholder='Comment Text' id='input-body' name='body'></textarea><br><br>"
     );
-    $('#comments').append(
-      "<button data-id='" + data._id + "' id='save-comment'>Submit</button>"
-    );
+    if (location.pathname == '/') {
+      $('#comments').append(
+        "<button data-id='" + data._id + "' id='save-comment'>Submit</button>"
+      );
+    } else {
+      $('#comments').append(
+        "<button data-id='" + data._id + "' id='save-comment'>Delete</button>"
+      );
+    }
 
     if (data.comment) {
       $('#input-title').val(data.comment.title);
@@ -33,7 +39,7 @@ $(document).on('click', '#article-comment', function() {
 
 $(document).on('click', '#save-article', function() {
   let thisId = $(this).attr('data-id');
-  var favorited = $(this).attr('data-favorited');
+  let favorited = $(this).attr('data-favorited');
 
   if (favorited === 'false') {
     $.ajax({
@@ -64,6 +70,11 @@ $(document).on('click', '#delete-comment', function() {
       location.reload();
     });
   }
+});
+
+$(document).on('click', '#remove-comment', function() {
+  let thisId = $(this).attr('data-id');
+  db.Comment.remove({ _id: thisId });
 });
 
 $(document).on('click', '#save-comment', function() {
