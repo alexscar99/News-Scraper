@@ -25,7 +25,7 @@ const routes = require('./controller/controller.js');
 app.use(routes);
 
 // connect to db and write routes
-mongoose.connect('mongodb://localhost/newsScraper');
+mongoose.connect('mongodb://localhost/scraperDB');
 
 app.get('/scrape', function(req, res) {
   axios.get('http://www.espn.com/').then(function(response) {
